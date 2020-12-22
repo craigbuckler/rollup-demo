@@ -5,18 +5,27 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "help": "rollup --help"
+    "help": "rollup --help",
+    "version": "rollup --version",
+    "quickstart": "rollup ./src/main.js --file ./build/bundle.js --format iife --sourcemap inline",
+    "quickstart:watch": "rollup ./src/main.js --file ./build/bundle.js --format iife --sourcemap inline --watch --no-watch.clearScreen",
+    "simple": "rollup --config ./config/rollup.simple.js",
+    "simple:watch": "rollup --config ./config/rollup.simplewatch.js --watch",
+    "nodemodule": "rollup --config ./config/rollup.npm.js",
+    "replace": "rollup --config ./config/rollup.replace.js",
+    "es5": "rollup --config ./config/rollup.es5.js",
+    "server": "smallserver"
   },
   "author": "Craig Buckler",
   "license": "MIT",
   "devDependencies": {
-    "@babel/core": "^7.12.9",
-    "@babel/preset-env": "^7.12.7",
-    "@rollup/plugin-babel": "^5.2.2",
+    "@rollup/plugin-buble": "^0.21.3",
     "@rollup/plugin-commonjs": "^17.0.0",
-    "@rollup/plugin-node-resolve": "^11.0.0",
+    "@rollup/plugin-node-resolve": "^11.0.1",
+    "@rollup/plugin-replace": "^2.3.4",
     "dayjs": "^1.9.7",
-    "rollup": "^2.34.2"
+    "rollup": "^2.35.1",
+    "small-static-server": "^1.0.3"
   },
   "dependencies": {}
 }
