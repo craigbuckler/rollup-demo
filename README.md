@@ -136,3 +136,33 @@ npx rollup --config ./config/rollup.es5.js
 ```
 
 Start the server with `npm run server` then load <http://localhost:8888/index.es5.html>. The clock works in IE11 and modern browsers.
+
+
+## Minify output
+
+Bundle and minify both ES6 `build/bundle.mjs` and ES5 `build/bundle.js` scripts using:
+
+```bash
+npm run minify
+```
+
+or
+
+```bash
+npx rollup --config ./config/rollup.minify.js
+```
+
+
+## Output production code
+
+Create final minified production code:
+
+```bash
+npm run build
+```
+
+or
+
+```bash
+npx rollup --config ./config/rollup.minify.js --environment NODE_ENV:production
+```

@@ -3,6 +3,7 @@ import replace from '@rollup/plugin-replace';
 import { nodeResolve as resolve } from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import buble from '@rollup/plugin-buble';
+import { terser } from 'rollup-plugin-terser';
 
 // settings
 const
@@ -40,7 +41,21 @@ export default [
     output: {
       file: './build/bundle.mjs',
       format: 'iife',
-      sourcemap
+      sourcemap,
+      plugins: [
+        terser({
+          ecma: 2018,
+          mangle: { toplevel: true },
+          compress: {
+            module: true,
+            toplevel: true,
+            unsafe_arrows: true,
+            drop_console: !dev,
+            drop_debugger: !dev
+          },
+          output: { quote_style: 1 }
+        })
+      ]
     }
 
   },
@@ -63,7 +78,19 @@ export default [
     output: {
       file: './build/bundle.js',
       format: 'iife',
-      sourcemap
+      sourcemap,
+      plugins: [
+        terser({
+          ecma: 2015,
+          mangle: { toplevel: true },
+          compress: {
+            toplevel: true,
+            drop_console: !dev,
+            drop_debugger: !dev
+          },
+          output: { quote_style: 1 }
+        })
+      ]
     }
 
   }

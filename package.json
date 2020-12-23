@@ -14,6 +14,8 @@
     "nodemodule": "rollup --config ./config/rollup.npm.js",
     "replace": "rollup --config ./config/rollup.replace.js",
     "es5": "rollup --config ./config/rollup.es5.js",
+    "minify": "rollup --config ./config/rollup.minify.js",
+    "build": "rollup --config ./config/rollup.minify.js --environment NODE_ENV:production",
     "server": "smallserver"
   },
   "author": "Craig Buckler",
@@ -25,6 +27,7 @@
     "@rollup/plugin-replace": "^2.3.4",
     "dayjs": "^1.9.7",
     "rollup": "^2.35.1",
+    "rollup-plugin-terser": "^7.0.2",
     "small-static-server": "^1.0.3"
   },
   "dependencies": {}
