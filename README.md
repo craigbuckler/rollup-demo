@@ -7,7 +7,7 @@ The project provides JavaScript which shows a realtime digital clock on an HTML 
 Rollup.js is installed locally and all configuration files are provided in the `config` directory.
 
 
-## Quickstart example
+## Quick start example
 
 Run:
 
@@ -57,7 +57,7 @@ or
 npx rollup --config ./config/rollup.simple.js
 ```
 
-to use the `./config/rollup.simple.js` configuration file which is identical to the quickstart example.
+to use the `./config/rollup.simple.js` configuration file which is identical to the quick start example.
 
 Run `npm run simple:watch` for automatic bundling. Note that `watch` options can be defined in the configuration file, but `--watch` must still be added as a `rollup` command-line flag.
 
@@ -76,18 +76,11 @@ This configuration removes the sourcemap in `production` mode.
 
 ## Use npm modules
 
-Node.js npm modules can be included in bundled scripts with two plugins:
+Node.js npm modules can be included in bundled scripts with the [`node-resolve`](https://github.com/rollup/plugins/tree/master/packages/node-resolve) and [`plugin-commonjs`](https://github.com/rollup/plugins/tree/master/packages/commonjs) plugins.
 
-1. [`node-resolve`](https://github.com/rollup/plugins/tree/master/packages/node-resolve) which locates the module in the `node_modules` directory, and
-1. [`plugin-commonjs`](https://github.com/rollup/plugins/tree/master/packages/commonjs) which converts CommonJS modules to ES6.
+The [day.js date library](https://day.js.org/) has been installed (using `npm install dayjs --save-dev`).
 
-Install the [day.js date library](https://day.js.org/):
-
-```bash
-npm install dayjs --save-dev
-```
-
-and bundle the `src/main-dayjs.js` script:
+It has been used in `src/main-dayjs.js` which can be bundled with:
 
 ```bash
 npm run nodemodule
@@ -102,13 +95,7 @@ npx rollup --config ./config/rollup.npm.js
 
 ## Replace tokens
 
-Install the Rollup.js [replace plugin](https://github.com/rollup/plugins/tree/master/packages/replace):
-
-```bash
-npm install @rollup/plugin-replace --save-dev
-```
-
-The configuration file specifies `tokens` to replace in the bundled script. Run with:
+The Rollup.js [replace plugin](https://github.com/rollup/plugins/tree/master/packages/replace) can replace strings. The `config/rollup.replace.js` configuration file defines a `tokens` object which replaces references in `src/main-replace.js`. Bundle with:
 
 ```bash
 npm run replace
@@ -123,7 +110,7 @@ npx rollup --config ./config/rollup.replace.js
 
 ## Bundle ES5 and ES6
 
-Bundle both ES6 `build/bundle.mjs` and ES5 `build/bundle.js` scripts using:
+The [Buble plugin](https://github.com/rollup/plugins/tree/master/packages/buble) can transpile ES6 to ES5. Bundle both ES6 `build/bundle.mjs` and ES5 `build/bundle.js` scripts using:
 
 ```bash
 npm run es5
@@ -135,12 +122,12 @@ or
 npx rollup --config ./config/rollup.es5.js
 ```
 
-Start the server with `npm run server` then load <http://localhost:8888/index.es5.html>. The clock works in IE11 and modern browsers.
+Start the server with `npm run server` then load <http://localhost:8888/index.es5.html>. The clock now works in IE11 as well as modern browsers.
 
 
 ## Minify output
 
-Bundle and minify both ES6 `build/bundle.mjs` and ES5 `build/bundle.js` scripts using:
+Bundle and minify both ES6 `build/bundle.mjs` and ES5 `build/bundle.js` scripts using the [Terser plugin](https://github.com/TrySound/rollup-plugin-terser):
 
 ```bash
 npm run minify
